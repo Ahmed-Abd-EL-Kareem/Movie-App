@@ -6,15 +6,24 @@ import { Link, useParams } from "react-router-dom";
 const MovieDetails = () => {
   const [dataMovie, setDataMovie] = useState([]);
   const par = useParams();
+
+  const API_KEY =
+    process.env.REACT_APP_TMDB_API_KEY || "836cae8d9dd8dec1aeab95b8f0ef6610";
+
   const getMovie = async () => {
-    const res = await axios.get(
-      `https://api.themoviedb.org/3/movie/${par.id}?api_key=836cae8d9dd8dec1aeab95b8f0ef6610&&language=ar`
-    );
-    setDataMovie(res.data);
+    try {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${par.id}?api_key=${API_KEY}&language=ar`
+      );
+      setDataMovie(res.data);
+    } catch (error) {
+      console.error("Error fetching movie details:", error);
+    }
   };
+
   useEffect(() => {
     getMovie();
-  }, []);
+  }, [par.id]);
 
   return (
     <div>

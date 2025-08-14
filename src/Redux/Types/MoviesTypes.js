@@ -1,11 +1,16 @@
 const ALLMOVIES = "ALLMOVIES";
 
-const MovieApi =
-  "https://api.themoviedb.org/3/movie/popular?api_key=836cae8d9dd8dec1aeab95b8f0ef6610&&language=ar";
+const API_KEY =
+  process.env.REACT_APP_TMDB_API_KEY || "836cae8d9dd8dec1aeab95b8f0ef6610";
+const BASE_URL =
+  process.env.REACT_APP_TMDB_BASE_URL || "https://api.themoviedb.org/3";
+
+const MovieApi = `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar`;
 
 const SearchMovie = (search) =>
-  `https://api.themoviedb.org/3/search/movie?api_key=836cae8d9dd8dec1aeab95b8f0ef6610&&query=${search}&language=ar`;
+  `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${search}&language=ar`;
+
 const CountPages = (page) =>
-  `https://api.themoviedb.org/3/movie/popular?api_key=836cae8d9dd8dec1aeab95b8f0ef6610&&language=ar&page=${page}`;
+  `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=ar&page=${page}`;
 
 export { ALLMOVIES, MovieApi, CountPages, SearchMovie };

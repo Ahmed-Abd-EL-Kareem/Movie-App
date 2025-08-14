@@ -3,11 +3,13 @@ import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { AllMovie } from "../Redux/Action/MovieAction";
 import { CountPages } from "../Redux/Types/MoviesTypes";
+
 const Paginations = () => {
   const [countPage, setCountPage] = useState(0);
 
-  const pages = useSelector((state) => state.pageCount);
+  const pages = useSelector((state) => state.movies.pageCount);
   const dispatch = useDispatch();
+
   useEffect(() => {
     setCountPage(pages);
   }, [pages]);
@@ -15,7 +17,9 @@ const Paginations = () => {
   const handlePageClick = (data) => {
     dispatch(AllMovie(CountPages(data.selected + 1)));
   };
+
   const pageCount = countPage;
+
   return (
     <ReactPaginate
       breakLabel="..."

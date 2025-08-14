@@ -12,8 +12,10 @@ const MovieList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(AllMovie(MovieApi));
-  }, []);
-  const dataMovies = useSelector((state) => state.movies);
+  }, [dispatch]);
+
+  const dataMovies = useSelector((state) => state.movies.movies);
+
   useEffect(() => {
     setMovies(dataMovies);
   }, [dataMovies]);
