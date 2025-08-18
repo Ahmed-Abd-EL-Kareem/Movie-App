@@ -229,4 +229,4 @@ const BASE_URL =
 
 ---
 
-**تم تطوير هذا المشروع بـ ❤️ باستخدام React.js و Redux Toolkit**
+**تم تطوير هذا المشروع بـ  ❤️  باستخدام React.js و Redux Toolkit**
